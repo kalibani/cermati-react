@@ -7,5 +7,13 @@ Styles for Links component
 
 // Start styles Links component
 .a-links {
-
+  color: darkblue;
+  &:hover {
+    text-decoration: none;
+  }
+  &:active, &:focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+  }
 }

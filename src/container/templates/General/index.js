@@ -1,34 +1,23 @@
 // General Component
 // --------------------------------------------------------
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
+import { NotificationPanel } from 'components';
 
-class General extends Component {
-// state = {};
-  componentDidMount() {}
-  // yourFunction = () => {};
-
-  render() {
-    const { propsName } = this.props;
-
-    return (
-      <tag>
-        Class Component (Stateful Component)
-        {' '}
-        {propsName}
-      </tag>
-    );
-  }
-}
+const General = ({ isMobile }) => (
+  <div>
+    <NotificationPanel isMobile={isMobile} />
+  </div>
+);
 
 General.propTypes = {
-  propsName: PropTypes.string
+  isMobile: PropTypes.bool.isRequired
 };
 
 General.defaultProps = {
-  propsName: ''
+  // propsName: ''
 };
 
-export default (General);
+export default General;

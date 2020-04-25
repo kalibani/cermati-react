@@ -1,34 +1,33 @@
 // Landing Component
 // --------------------------------------------------------
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+// import PropTypes from 'prop-types';
 import './styles.scss';
+import General from 'container/templates/General';
 
-class Landing extends Component {
-// state = {};
-  componentDidMount() {}
-  // yourFunction = () => {};
+const Landing = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 896);
 
-  render() {
-    const { propsName } = this.props;
+  useEffect(() => {
+    window.onresize = () => {
+      setIsMobile(window.innerWidth < 896);
+    };
+  }, []);
 
-    return (
-      <div>
-        Hai
-        {' '}
-        {propsName}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <General isMobile={isMobile} />
+    </div>
+  );
+};
 
 Landing.propTypes = {
-  propsName: PropTypes.string
+  // propsName: PropTypes.string
 };
 
 Landing.defaultProps = {
-  propsName: ''
+  // propsName: ''
 };
 
 export default (Landing);
