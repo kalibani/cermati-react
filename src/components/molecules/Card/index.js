@@ -3,20 +3,47 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classname from 'classnames';
+import { H4 } from 'components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './styles.scss';
 
-const Card = ({ propsName }) => (
-  <tag>
-    Functional Component (Stateless Component)
-  </tag>
-);
+const Card = ({ title, content, fontAwesome }) => {
+  // const [icon, setIcon] = useState('');
+
+  const classNames = classname('m-card', {
+    // 'is-show': isShow,
+    // 'is-mobile': isMobile
+  });
+  return (
+    <div className={classNames}>
+      <div className="o-card-header">
+        <H4>
+          {title}
+        </H4>
+        <FontAwesomeIcon icon={fontAwesome} />
+      </div>
+      <p className="card-content">
+        {content}
+      </p>
+    </div>
+
+  );
+};
 
 Card.propTypes = {
-  propsName: PropTypes.string
+  title: PropTypes.string,
+  content: PropTypes.string,
+  fontAwesome: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string
+  ])
 };
 
 Card.defaultProps = {
-  propsName: ''
+  title: '',
+  content: '',
+  fontAwesome: ''
 };
 
 export default Card;

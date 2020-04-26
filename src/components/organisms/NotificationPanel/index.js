@@ -13,7 +13,8 @@ const NotificationPanel = ({ isMobile }) => {
   const toggleNotification = () => setIsShow(!isShow);
   const classNames = classname('o-notification-panel', {
     'is-show': isShow,
-    'is-mobile': isMobile
+    'is-mobile': isMobile,
+    'is-show-mobile': isShow && isMobile
   });
 
   return (

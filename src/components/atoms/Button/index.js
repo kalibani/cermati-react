@@ -23,8 +23,8 @@ const Button = ({
   return (
     <>
       <button
-        type="button"
         className={classNames}
+        type="button"
         onClick={onClick}
         tabIndex={tabIndex}
         style={style}

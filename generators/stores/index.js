@@ -81,22 +81,22 @@ module.exports = {
       actions = [
         {
           type: 'add',
-          path: `../src/stores/actions/{{camelCase name}}/index.js`,
+          path: '../src/stores/actions/{{camelCase name}}/index.js',
           templateFile: actionsTemplate
         },
         {
           type: 'add',
-          path: `../src/stores/actions/{{camelCase name}}/readme.md`,
+          path: '../src/stores/actions/{{camelCase name}}/readme.md',
           templateFile: './stores/add/readme.hbs'
         },
         {
           type: 'add',
-          path: `../src/stores/reducers/{{camelCase name}}/index.js`,
+          path: '../src/stores/reducers/{{camelCase name}}/index.js',
           templateFile: reducerTemplate
         },
         {
           type: 'add',
-          path: `../src/stores/reducers/{{camelCase name}}/readme.md`,
+          path: '../src/stores/reducers/{{camelCase name}}/readme.md',
           templateFile: './stores/add/readme.hbs'
         },
         {

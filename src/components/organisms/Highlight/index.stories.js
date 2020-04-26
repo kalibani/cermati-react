@@ -1,12 +1,12 @@
-// Stories H1 Component
+// Stories Hero Component
 // --------------------------------------------------------
 import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
-import H1 from './index';
+import Hero from './index';
 import Notes from './readme.md';
 
-storiesOf('Atoms', module).add('H1', () => (
-  <H1 />
+storiesOf('Molecules', module).add('Hero', () => (
+  <Hero />
 ), {
   info: { inline: true, header: false, text: Notes }
 });

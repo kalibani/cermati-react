@@ -1,7 +1,8 @@
+/* eslint-disable import/no-cycle */
 import Card from './Card';
-import Hero from './Hero';
+import Header from './Header';
 
 export {
   Card,
-  Hero
+  Header
 };

@@ -6,8 +6,7 @@ import Card from './index';
 import Notes from './readme.md';
 
 storiesOf('Molecules', module).add('Card', () => (
-<Card />
+  <Card />
 ), {
-info: { inline: true, header: false, text: Notes },
-}
-);
+  info: { inline: true, header: false, text: Notes }
+});

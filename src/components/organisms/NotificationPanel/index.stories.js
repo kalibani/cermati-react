@@ -6,8 +6,7 @@ import NotificationPanel from './index';
 import Notes from './readme.md';
 
 storiesOf('Organisms', module).add('NotificationPanel', () => (
-<NotificationPanel />
+  <NotificationPanel />
 ), {
-info: { inline: true, header: false, text: Notes },
-}
-);
+  info: { inline: true, header: false, text: Notes }
+});

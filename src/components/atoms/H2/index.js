@@ -1,4 +1,4 @@
-// H1 Component
+// H2 Component
 // --------------------------------------------------------
 
 import React from 'react';
@@ -6,25 +6,25 @@ import PropTypes from 'prop-types';
 import classname from 'classnames';
 import './styles.scss';
 
-const H1 = ({
+const H2 = ({
   className, color, weight, children
 }) => {
-  const classNames = classname('a-h1', className, color, weight);
-  return <h1 className={classNames}>{children}</h1>;
+  const classNames = classname('a-h2', className, color, weight);
+  return <h2 className={classNames}>{children}</h2>;
 };
 
-H1.propTypes = {
+H2.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   weight: PropTypes.string,
   children: PropTypes.node
 };
 
-H1.defaultProps = {
+H2.defaultProps = {
   className: '',
   color: '',
   weight: '',
   children: ''
 };
 
-export default H1;
+export default H2;

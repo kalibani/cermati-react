@@ -1,13 +1,13 @@
-// Test Header Component
+// Test H4 Component
 // --------------------------------------------------------
 
 import React from 'react';
-import Header from '../../index';
+import H4 from '../../index';
 import renderer from 'react-test-renderer';
 
 test('Input is match the snapshot', () => {
 const component = renderer.create(
-Header,
+H4,
 );
 let tree = component.toJSON();
 expect(tree).toMatchSnapshot();

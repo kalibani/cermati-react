@@ -1,9 +1,13 @@
-import Header from './Header';
-import Footer from './Footer';
+/* eslint-disable import/no-cycle */
+
 import NotificationPanel from './NotificationPanel';
+import Hero from './Hero';
+import Highlight from './Highlight';
+import Footer from './Footer';
 
 export {
-  Header,
-  Footer,
-  NotificationPanel
+  NotificationPanel,
+  Hero,
+  Highlight,
+  Footer
 };
