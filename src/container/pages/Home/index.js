@@ -81,7 +81,7 @@ const Home = () => {
     countRef.current = setTimeout(() => {
       setIsPanelShow(false);
       setIsTimeToShow(true);
-    }, 3000);
+    }, 600000);
   };
 
   useEffect(() => {

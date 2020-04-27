@@ -21,7 +21,7 @@ const NotificationPanel = ({
     <div className={classNames}>
       <div className="container d-flex justify-content-center">
         <div className="notification-panel-wrapper">
-          <p>
+          <p className="notification-content">
             By accessing and using this website, you acknowledge that you have read and
             understand our
             {' '}
