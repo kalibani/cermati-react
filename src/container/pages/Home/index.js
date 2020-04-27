@@ -1,4 +1,4 @@
-// Landing Component
+// Home Component
 // --------------------------------------------------------
 
 import React, { useState, useEffect } from 'react';
@@ -7,10 +7,12 @@ import {
   faComment, faPaintBrush, faBullhorn, faServer, faBoxes, faChartLine
 } from '@fortawesome/free-solid-svg-icons';
 import './styles.scss';
-import General from 'container/templates/General';
+import Landing from 'container/templates/Landing';
 
-const Landing = () => {
+const Home = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 896);
+  const [username] = useState('Kautzar Alibani');
+  const [currentYear] = useState(new Date().getFullYear());
   const [dataHighlight] = useState([
     {
       title: 'Consult',
@@ -61,22 +63,27 @@ const Landing = () => {
     window.onresize = () => {
       setIsMobile(window.innerWidth < 896);
     };
-    window.scrollTo(-30, 0);
+    // window.scrollTo(-30, 0);
   }, []);
 
   return (
     <div>
-      <General isMobile={isMobile} dataHighlight={dataHighlight} />
+      <Landing
+        isMobile={isMobile}
+        dataHighlight={dataHighlight}
+        username={username}
+        currentYear={currentYear}
+      />
     </div>
   );
 };
 
-Landing.propTypes = {
+Home.propTypes = {
   // propsName: PropTypes.string
 };
 
-Landing.defaultProps = {
+Home.defaultProps = {
   // propsName: ''
 };
 
-export default (Landing);
+export default (Home);

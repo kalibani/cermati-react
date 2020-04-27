@@ -1,5 +1,6 @@
+/* eslint-disable no-irregular-whitespace */
 /* eslint-disable react/no-unescaped-entities */
-// General Component
+// Landing Component
 // --------------------------------------------------------
 
 import React from 'react';
@@ -7,11 +8,13 @@ import PropTypes from 'prop-types';
 import classname from 'classnames';
 import './styles.scss';
 import {
-  NotificationPanel, Hero, Highlight
+  NotificationPanel, Hero, Highlight, Footer
 } from 'components';
 
-const General = ({ isMobile, dataHighlight }) => {
-  const classNamesTemplate = classname('t-general', {
+const Landing = ({
+  isMobile, dataHighlight, username, currentYear
+}) => {
+  const classNamesTemplate = classname('t-landing', {
     // 'is-show': isShow,
     // 'is-mobile': isMobile
   });
@@ -19,21 +22,24 @@ const General = ({ isMobile, dataHighlight }) => {
     <>
       <div className={classNamesTemplate}>
         <NotificationPanel isMobile={isMobile} />
-        <Hero isMobile={isMobile} />
+        <Hero isMobile={isMobile} username={username} />
         <Highlight dataHighlight={dataHighlight} />
+        <Footer content={`© ${currentYear} ${username}. All rights reserved.​`} />
       </div>
     </>
 
   );
 };
 
-General.propTypes = {
+Landing.propTypes = {
   isMobile: PropTypes.bool.isRequired,
-  dataHighlight: PropTypes.array.isRequired
+  dataHighlight: PropTypes.array.isRequired,
+  username: PropTypes.string.isRequired,
+  currentYear: PropTypes.number.isRequired
 };
 
-General.defaultProps = {
+Landing.defaultProps = {
   // propsName: ''
 };
 
-export default General;
+export default Landing;

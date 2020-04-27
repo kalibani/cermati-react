@@ -8,7 +8,7 @@ import {
 
 import * as AppRoutes from 'config/';
 
-import Landing from 'container/pages';
+import Home from 'container/pages';
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route
           exact
           path={AppRoutes.Landing}
-          component={Landing}
+          component={Home}
         />
         <Redirect from="*" to="/error-404" />
       </Switch>

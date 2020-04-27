@@ -6,6 +6,17 @@ Styles for Footer component
 @import "../../../assets/styles/variables";
 
 // Start styles Footer component
-.o-footer {
+.m-footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:$dark-blue;
+  color: white;
+  text-align: center;
+  padding: 20px;
 
+  .footer-content {
+    font-size: 14px;
+    color: #ffffff8a;
+  }
 }

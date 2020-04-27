@@ -11,7 +11,7 @@ import classname from 'classnames';
 
 import './styles.scss';
 
-const Hero = ({ children, isMobile }) => {
+const Hero = ({ children, isMobile, username }) => {
   const classNames = classname('o-hero', {
     'is-mobile': isMobile
   });
@@ -22,7 +22,9 @@ const Hero = ({ children, isMobile }) => {
       </div>
       <div className="hero-content">
         <H1 className="heading-1">
-          Hello! I'm Kautzar Alibani
+          Hello! I'm
+          {' '}
+          {username}
         </H1>
         <H2 className="heading-2">
           Consult, Design, and Develop Websites
@@ -45,11 +47,13 @@ const Hero = ({ children, isMobile }) => {
 
 Hero.propTypes = {
   isMobile: PropTypes.bool.isRequired,
-  children: PropTypes.node
+  children: PropTypes.node,
+  username: PropTypes.string
 };
 
 Hero.defaultProps = {
-  children: ''
+  children: '',
+  username: ''
 };
 
 export default Hero;

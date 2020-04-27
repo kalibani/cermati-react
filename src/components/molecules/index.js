@@ -1,8 +1,10 @@
 /* eslint-disable import/no-cycle */
 import Card from './Card';
 import Header from './Header';
+import Footer from './Footer';
 
 export {
   Card,
-  Header
+  Header,
+  Footer
 };
