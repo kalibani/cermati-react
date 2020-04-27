@@ -1,5 +1,5 @@
 {
-  "name": "cermati",
+  "name": "cermati-layout",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +11,10 @@
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
+    "express": "^4.17.1",
+    "express-favicon": "^2.0.1",
     "node-sass": "^4.14.0",
+    "path": "^0.12.7",
     "plop": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -21,7 +24,8 @@
     "reactstrap": "^8.4.1"
   },
   "scripts": {
-    "start": "NODE_ENV=development react-scripts start",
+    "dev": "NODE_ENV=development react-scripts start",
+    "start": "node server.js",
     "build": "NODE_ENV=production GENERATE_SOURCEMAP=false react-scripts build",
     "test": "NODE_ENV=test react-scripts test --watchAll=false",
     "test-watch": "react-scripts test",
