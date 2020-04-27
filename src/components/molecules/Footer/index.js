@@ -7,10 +7,7 @@ import classname from 'classnames';
 import './styles.scss';
 
 const Footer = ({ content }) => {
-  const classNames = classname('m-footer', {
-    // 'is-show': isShow,
-    // 'is-mobile': isMobile
-  });
+  const classNames = classname('m-footer');
 
   return (
     <div className={classNames}>

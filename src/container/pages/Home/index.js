@@ -1,8 +1,8 @@
+/* eslint-disable react/no-this-in-sfc */
 // Home Component
 // --------------------------------------------------------
 
-import React, { useState, useEffect } from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   faComment, faPaintBrush, faBullhorn, faServer, faBoxes, faChartLine
 } from '@fortawesome/free-solid-svg-icons';
@@ -59,31 +59,65 @@ const Home = () => {
     }
   ]);
 
+  const [newsTitle] = useState('Get latest updates in web technologies');
+  const [newsContent] = useState(`I write articles related to web technologies, such as design trends, development
+  tools, UI/UX case studies and reviews, and more. Sign up to my newsletter to get
+  them all.`);
+
+  const [isNotificationShow, setIsNotificationShow] = useState(true);
+  const [isPanelShow, setIsPanelShow] = useState(false);
+  const [isTimeToShow, setIsTimeToShow] = useState(true);
+  const [count] = useState(0);
+  const countRef = useRef(count);
+  const handleHideNotification = () => setIsNotificationShow(false);
+  const handleShowPanel = (isShow) => {
+    setIsPanelShow(isShow);
+  };
+
+  const handleHidePanel = () => {
+    setIsPanelShow(false);
+    setIsTimeToShow(false);
+    // showing up again after 10 minutes
+    countRef.current = setTimeout(() => {
+      setIsPanelShow(false);
+      setIsTimeToShow(true);
+    }, 3000);
+  };
+
   useEffect(() => {
     window.onresize = () => {
       setIsMobile(window.innerWidth < 896);
     };
-    // window.scrollTo(-30, 0);
+    const heightOnShowPanel = isMobile ? (window.innerHeight / 3) : (window.innerHeight / 4);
+    window.onscroll = () => {
+      if (window.scrollY >= Math.round(heightOnShowPanel) && isTimeToShow) {
+        handleShowPanel(true);
+      }
+    };
+  }, [isMobile, isTimeToShow]);
+
+  useEffect(() => () => {
+    clearTimeout(countRef.current);
   }, []);
+
 
   return (
     <div>
       <Landing
+        isNotificationShow={isNotificationShow}
+        handleHideNotification={handleHideNotification}
         isMobile={isMobile}
         dataHighlight={dataHighlight}
         username={username}
         currentYear={currentYear}
+        newsTitle={newsTitle}
+        newsContent={newsContent}
+        isPanelShow={isPanelShow}
+        isTimeToShow={isTimeToShow}
+        handleHidePanel={handleHidePanel}
       />
     </div>
   );
-};
-
-Home.propTypes = {
-  // propsName: PropTypes.string
-};
-
-Home.defaultProps = {
-  // propsName: ''
 };
 
 export default (Home);

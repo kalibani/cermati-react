@@ -9,10 +9,7 @@ import classname from 'classnames';
 import './styles.scss';
 
 const Highlight = ({ children, dataHighlight }) => {
-  const classNames = classname('o-highlight', {
-    // 'is-show': isShow,
-    // 'is-mobile': isMobile
-  });
+  const classNames = classname('o-highlight');
   return (
     <div className={classNames}>
       <div className="highlight-header">

@@ -1,13 +1,13 @@
-// Test Footer Component
+// Test Button Component
 // --------------------------------------------------------
 
 import React from 'react';
-import Footer from '../../../organisms/index';
+import Button from '../../index';
 import renderer from 'react-test-renderer';
 
 test('Input is match the snapshot', () => {
 const component = renderer.create(
-Footer,
+Button,
 );
 let tree = component.toJSON();
 expect(tree).toMatchSnapshot();

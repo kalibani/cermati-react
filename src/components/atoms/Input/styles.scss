@@ -1,0 +1,26 @@
+/* ==========================================================================
+Styles for Button component
+========================================================================== */
+
+// import variables
+@import "../../../assets/styles/variables";
+
+// Start styles Button component
+.a-input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  background-color: $white;
+  padding: 2px 5px;
+  height: 30px;
+  color: $white;
+  &.is-mobile {
+    width: 70px;
+    height: 35px;
+    font-size: 14px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

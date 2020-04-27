@@ -1,20 +1,20 @@
 // NotificationPanel Component
 // --------------------------------------------------------
 
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classname from 'classnames';
 import { Button, Links } from 'components';
 import './styles.scss';
 
-const NotificationPanel = ({ isMobile }) => {
-  const [isShow, setIsShow] = useState(true);
-
-  const toggleNotification = () => setIsShow(!isShow);
+const NotificationPanel = ({
+  isMobile, isNotificationShow,
+  handleHideNotification
+}) => {
   const classNames = classname('o-notification-panel', {
-    'is-show': isShow,
+    'is-show': isNotificationShow,
     'is-mobile': isMobile,
-    'is-show-mobile': isShow && isMobile
+    'is-show-mobile': isNotificationShow && isMobile
   });
 
   return (
@@ -35,7 +35,7 @@ const NotificationPanel = ({ isMobile }) => {
             .
           </p>
 
-          <Button onClick={toggleNotification} className={isMobile ? 'is-mobile' : ''}>
+          <Button onClick={handleHideNotification} className={isMobile ? 'is-mobile' : ''}>
             Got it
           </Button>
         </div>
@@ -45,11 +45,13 @@ const NotificationPanel = ({ isMobile }) => {
 };
 
 NotificationPanel.propTypes = {
-  isMobile: PropTypes.bool.isRequired
+  isMobile: PropTypes.bool.isRequired,
+  isNotificationShow: PropTypes.bool.isRequired,
+  handleHideNotification: PropTypes.func
 };
 
 NotificationPanel.defaultProps = {
-  // propsName: ''
+  handleHideNotification: () => {}
 };
 
 export default (NotificationPanel);

@@ -9,12 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './styles.scss';
 
 const Card = ({ title, content, fontAwesome }) => {
-  // const [icon, setIcon] = useState('');
-
-  const classNames = classname('m-card', {
-    // 'is-show': isShow,
-    // 'is-mobile': isMobile
-  });
+  const classNames = classname('m-card');
   return (
     <div className={classNames}>
       <div className="o-card-header">

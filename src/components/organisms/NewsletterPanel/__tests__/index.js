@@ -1,13 +1,13 @@
-// Test Footer Component
+// Test NotificationPanel Component
 // --------------------------------------------------------
 
 import React from 'react';
-import Footer from '../../../organisms/index';
+import NotificationPanel from '../../index';
 import renderer from 'react-test-renderer';
 
 test('Input is match the snapshot', () => {
 const component = renderer.create(
-Footer,
+NotificationPanel,
 );
 let tree = component.toJSON();
 expect(tree).toMatchSnapshot();

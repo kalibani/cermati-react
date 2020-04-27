@@ -8,23 +8,32 @@ import PropTypes from 'prop-types';
 import classname from 'classnames';
 import './styles.scss';
 import {
-  NotificationPanel, Hero, Highlight, Footer
+  NotificationPanel, Hero, Highlight, Footer, NewsletterPanel
 } from 'components';
 
 const Landing = ({
-  isMobile, dataHighlight, username, currentYear
+  isMobile, dataHighlight, username, currentYear, newsTitle, newsContent, isPanelShow, handleHidePanel, isNotificationShow, handleHideNotification, isTimeToShow
 }) => {
-  const classNamesTemplate = classname('t-landing', {
-    // 'is-show': isShow,
-    // 'is-mobile': isMobile
-  });
+  const classNamesTemplate = classname('t-landing');
   return (
     <>
       <div className={classNamesTemplate}>
-        <NotificationPanel isMobile={isMobile} />
+        <NotificationPanel
+          isNotificationShow={isNotificationShow}
+          handleHideNotification={handleHideNotification}
+          isMobile={isMobile}
+        />
         <Hero isMobile={isMobile} username={username} />
         <Highlight dataHighlight={dataHighlight} />
         <Footer content={`© ${currentYear} ${username}. All rights reserved.​`} />
+        <NewsletterPanel
+          isMobile={isMobile}
+          newsTitle={newsTitle}
+          newsContent={newsContent}
+          isPanelShow={isPanelShow}
+          isTimeToShow={isTimeToShow}
+          handleHidePanel={handleHidePanel}
+        />
       </div>
     </>
 
@@ -32,10 +41,17 @@ const Landing = ({
 };
 
 Landing.propTypes = {
+  isNotificationShow: PropTypes.bool.isRequired,
+  handleHideNotification: PropTypes.func.isRequired,
   isMobile: PropTypes.bool.isRequired,
   dataHighlight: PropTypes.array.isRequired,
   username: PropTypes.string.isRequired,
-  currentYear: PropTypes.number.isRequired
+  currentYear: PropTypes.number.isRequired,
+  newsTitle: PropTypes.string.isRequired,
+  newsContent: PropTypes.string.isRequired,
+  isPanelShow: PropTypes.bool.isRequired,
+  handleHidePanel: PropTypes.func.isRequired,
+  isTimeToShow: PropTypes.bool.isRequired
 };
 
 Landing.defaultProps = {
