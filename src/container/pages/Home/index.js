@@ -1,4 +1,4 @@
-/* eslint-disable react/no-this-in-sfc */
+/* eslint-disable max-depth */
 // Home Component
 // --------------------------------------------------------
 
@@ -74,17 +74,70 @@ const Home = () => {
     setIsPanelShow(isShow);
   };
 
+  const handlePanelShowAfter10Mins = (timeOut = 600000) => {
+    countRef.current = setTimeout(() => {
+      setIsPanelShow(false);
+      setIsTimeToShow(true);
+    }, timeOut);
+  };
+
+  const handleGetTime = () => {
+    const today = new Date();
+    const time = {
+      hours: today.getHours(),
+      minutes: today.getMinutes(),
+      seconds: today.getSeconds()
+    };
+    return time;
+  };
+
   const handleHidePanel = () => {
     setIsPanelShow(false);
     setIsTimeToShow(false);
     // showing up again after 10 minutes
-    countRef.current = setTimeout(() => {
+    handlePanelShowAfter10Mins();
+    const lastTimeUserClickClose = handleGetTime();
+    localStorage.setItem('lastTimeUserClickClose', JSON.stringify(lastTimeUserClickClose));
+  };
+
+  const handleReloadPage = () => {
+    const lastTimeUserClickClose = localStorage.getItem('lastTimeUserClickClose');
+    const lastTimeUserReloadPage = localStorage.getItem('lastTimeUserReloadPage');
+    let newTimeOut = 600000;
+    const currentTimeOut = 600000;
+    if (lastTimeUserClickClose && lastTimeUserReloadPage) {
+      const hoursLastClick = Number(JSON.parse(lastTimeUserClickClose).hours);
+      const hoursLastReload = Number(JSON.parse(lastTimeUserReloadPage).hours);
+      // still in same hours
+      if ((hoursLastReload === hoursLastClick)) {
+        const minutesLastClick = Number(JSON.parse(lastTimeUserClickClose).minutes);
+        const minutesLastReload = Number(JSON.parse(lastTimeUserReloadPage).minutes);
+        const secondsLastClick = Number(JSON.parse(lastTimeUserClickClose).seconds);
+        const secondsLastReload = Number(JSON.parse(lastTimeUserReloadPage).seconds);
+        if (minutesLastReload <= minutesLastClick && secondsLastReload >= secondsLastClick) {
+          newTimeOut = currentTimeOut - ((secondsLastReload - secondsLastClick) * 1000);
+        } else if (minutesLastReload > minutesLastClick && secondsLastReload <= secondsLastClick) {
+          const lessThanTenMinutes = ((minutesLastReload - minutesLastClick) * 60000) < currentTimeOut;
+          if (lessThanTenMinutes) {
+            newTimeOut = currentTimeOut - ((60 - (secondsLastClick - secondsLastReload)) * 1000);
+          }
+        } else {
+          localStorage.removeItem('lastTimeUserClickClose');
+          localStorage.removeItem('lastTimeUserReloadPage');
+        }
+      }
+    }
+
+    if (newTimeOut < currentTimeOut) {
       setIsPanelShow(false);
-      setIsTimeToShow(true);
-    }, 600000);
+      setIsTimeToShow(false);
+      clearTimeout(countRef.current);
+      handlePanelShowAfter10Mins(newTimeOut);
+    }
   };
 
   useEffect(() => {
+    handleReloadPage();
     window.onresize = () => {
       setIsMobile(window.innerWidth < 896);
     };
@@ -94,7 +147,11 @@ const Home = () => {
         handleShowPanel(true);
       }
     };
-  }, [isMobile, isTimeToShow]);
+    window.onbeforeunload = () => {
+      const lastTimeUserReloadPage = handleGetTime();
+      localStorage.setItem('lastTimeUserReloadPage', JSON.stringify(lastTimeUserReloadPage));
+    };
+  }, []);
 
   useEffect(() => () => {
     clearTimeout(countRef.current);

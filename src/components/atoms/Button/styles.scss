@@ -8,7 +8,7 @@ Styles for Button component
 // Start styles Button component
 .a-button {
   width: 120px;
-  height: 40px;
+  height: 36px;
   margin: 0 auto;
   padding: 0;
   display: inline-block;
@@ -16,6 +16,7 @@ Styles for Button component
   background-color: $blue;
   border-radius: 5px;
   color: $white;
+  border: 0;
   &.is-mobile {
     width: 70px;
     height: 35px;
