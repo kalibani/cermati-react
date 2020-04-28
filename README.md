@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This Project was build with Atomic Design style. You can learn more at [Thinking About React, Atomically] (https://blog.usejournal.com/thinking-about-react-atomically-608c865d2262)
+This Project was build with Atomic Design style. You can learn more at [Thinking About React, Atomically](https://blog.usejournal.com/thinking-about-react-atomically-608c865d2262)
 
 Access this web on [Cermati Layout](https://cermati-layout.herokuapp.com/).
 
