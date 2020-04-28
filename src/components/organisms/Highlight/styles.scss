@@ -10,11 +10,21 @@ Styles for Hero component
 .o-highlight {
   background-color: $smoke-grey;
   padding: 20px 20px 40px;
+  @media screen and (min-width: 1600px) {
+    &.o-highlight {
+      padding: 40px 20px 40px;
+    }
+  }
   .highlight-header {
     margin: auto;
     max-width: 510px;
     text-align: center;
     padding-top: 30px;
+    @media screen and (min-width: 1600px) {
+      &.highlight-header {
+        padding-top: 40px;
+      }
+    }
 
     .highlight-h1 {
       color: $outer-space;

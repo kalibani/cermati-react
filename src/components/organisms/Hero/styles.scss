@@ -17,8 +17,12 @@ Styles for Hero component
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
-  // .hero-header {
-  // }
+
+  @media screen and (min-width: 1600px) {
+    &.o-hero {
+      height: 525px;
+    }
+  }
 
   &.is-mobile {
     .hero-content {

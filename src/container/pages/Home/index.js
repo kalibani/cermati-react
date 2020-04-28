@@ -141,9 +141,11 @@ const Home = () => {
     window.onresize = () => {
       setIsMobile(window.innerWidth < 896);
     };
-    const heightOnShowPanel = isMobile ? (window.innerHeight / 3) : (window.innerHeight / 4);
+    const el = document.getElementById('root');
+    const scrollArea = el.scrollHeight - window.innerHeight;
+    const showPanelOnHeight = scrollArea / 3;
     window.onscroll = () => {
-      if (window.scrollY >= Math.round(heightOnShowPanel) && isTimeToShow) {
+      if (window.scrollY >= Math.round(showPanelOnHeight) && isTimeToShow) {
         handleShowPanel(true);
       }
     };
