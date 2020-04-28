@@ -10,16 +10,38 @@ Styles for Hero component
 .o-highlight {
   background-color: $smoke-grey;
   padding: 20px 20px 40px;
+
+  // Large Screen
   @media screen and (min-width: 1600px) {
     &.o-highlight {
       padding: 40px 20px 40px;
+      height: 550px;
     }
   }
+
+  // Ipad Pro
+  @media only screen 
+  and (min-width: 834px) 
+  and (max-width: 1194px) {
+    &.o-highlight {
+      padding: 30px 20px 40px;
+      .highlight-content {
+        height: 490px;
+        margin-top: 40px;
+      }
+      .highlight-header {
+        padding-top: 47px;
+      }
+    }
+  }
+
   .highlight-header {
     margin: auto;
     max-width: 510px;
     text-align: center;
     padding-top: 30px;
+    
+    // Large Screen
     @media screen and (min-width: 1600px) {
       &.highlight-header {
         padding-top: 40px;
@@ -36,4 +58,6 @@ Styles for Hero component
       color: $outer-space;
     }
   }
+
+  
 }

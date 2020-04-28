@@ -17,10 +17,19 @@ Styles for Hero component
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
-
+  // Large Screen
   @media screen and (min-width: 1600px) {
     &.o-hero {
       height: 525px;
+    }
+  }
+
+  // Ipad Pro
+  @media only screen 
+  and (min-width: 834px) 
+  and (max-width: 1194px) {
+    &.o-hero {
+      height: 600px;
     }
   }
 
