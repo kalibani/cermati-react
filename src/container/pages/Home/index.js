@@ -104,15 +104,15 @@ const Home = () => {
     let newTimeOut = 600000;
     const currentTimeOut = 600000;
     const lastTimeUserClickClose = localStorage.getItem('lastTimeUserClickClose');
-    const lastTimeUserReloadPage = localStorage.getItem('lastTimeUserReloadPage');
+    const lastTimeUserReloadPage = handleGetTime();
 
     if ((lastTimeUserClickClose && lastTimeUserReloadPage)) {
       const hoursLastClick = Number(JSON.parse(lastTimeUserClickClose).hours);
-      const hoursLastReload = Number(JSON.parse(lastTimeUserReloadPage).hours);
+      const hoursLastReload = lastTimeUserReloadPage.hours;
       const minutesLastClick = Number(JSON.parse(lastTimeUserClickClose).minutes);
-      const minutesLastReload = Number(JSON.parse(lastTimeUserReloadPage).minutes);
+      const minutesLastReload = lastTimeUserReloadPage.minutes;
       const secondsLastClick = Number(JSON.parse(lastTimeUserClickClose).seconds);
-      const secondsLastReload = Number(JSON.parse(lastTimeUserReloadPage).seconds);
+      const secondsLastReload = lastTimeUserReloadPage.seconds;
       const isLessThanTenMinutes = ((minutesLastReload - minutesLastClick) * 60000) < currentTimeOut;
       if ((hoursLastReload === hoursLastClick) && isLessThanTenMinutes) {
         if (minutesLastReload <= minutesLastClick && secondsLastReload >= secondsLastClick) {
@@ -146,10 +146,6 @@ const Home = () => {
       if (window.scrollY >= Math.round(showPanelOnHeight) && isTimeToShow) {
         handleShowPanel(true);
       }
-    };
-    window.onbeforeunload = () => {
-      const lastTimeUserReloadPage = handleGetTime();
-      localStorage.setItem('lastTimeUserReloadPage', JSON.stringify(lastTimeUserReloadPage));
     };
   }, []);
 
