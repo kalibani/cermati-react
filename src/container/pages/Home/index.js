@@ -101,30 +101,28 @@ const Home = () => {
   };
 
   const handleReloadPage = () => {
-    const lastTimeUserClickClose = localStorage.getItem('lastTimeUserClickClose');
-    const lastTimeUserReloadPage = localStorage.getItem('lastTimeUserReloadPage');
     let newTimeOut = 600000;
     const currentTimeOut = 600000;
-    if (lastTimeUserClickClose && lastTimeUserReloadPage) {
+    const lastTimeUserClickClose = localStorage.getItem('lastTimeUserClickClose');
+    const lastTimeUserReloadPage = localStorage.getItem('lastTimeUserReloadPage');
+
+    if ((lastTimeUserClickClose && lastTimeUserReloadPage)) {
       const hoursLastClick = Number(JSON.parse(lastTimeUserClickClose).hours);
       const hoursLastReload = Number(JSON.parse(lastTimeUserReloadPage).hours);
-      // still in same hours
-      if ((hoursLastReload === hoursLastClick)) {
-        const minutesLastClick = Number(JSON.parse(lastTimeUserClickClose).minutes);
-        const minutesLastReload = Number(JSON.parse(lastTimeUserReloadPage).minutes);
-        const secondsLastClick = Number(JSON.parse(lastTimeUserClickClose).seconds);
-        const secondsLastReload = Number(JSON.parse(lastTimeUserReloadPage).seconds);
+      const minutesLastClick = Number(JSON.parse(lastTimeUserClickClose).minutes);
+      const minutesLastReload = Number(JSON.parse(lastTimeUserReloadPage).minutes);
+      const secondsLastClick = Number(JSON.parse(lastTimeUserClickClose).seconds);
+      const secondsLastReload = Number(JSON.parse(lastTimeUserReloadPage).seconds);
+      const isLessThanTenMinutes = ((minutesLastReload - minutesLastClick) * 60000) < currentTimeOut;
+      if ((hoursLastReload === hoursLastClick) && isLessThanTenMinutes) {
         if (minutesLastReload <= minutesLastClick && secondsLastReload >= secondsLastClick) {
           newTimeOut = currentTimeOut - ((secondsLastReload - secondsLastClick) * 1000);
-        } else if (minutesLastReload > minutesLastClick && secondsLastReload <= secondsLastClick) {
-          const lessThanTenMinutes = ((minutesLastReload - minutesLastClick) * 60000) < currentTimeOut;
-          if (lessThanTenMinutes) {
-            newTimeOut = currentTimeOut - ((60 - (secondsLastClick - secondsLastReload)) * 1000);
-          }
         } else {
-          localStorage.removeItem('lastTimeUserClickClose');
-          localStorage.removeItem('lastTimeUserReloadPage');
+          newTimeOut = currentTimeOut - ((60 - (secondsLastClick - secondsLastReload)) * 1000);
         }
+      } else {
+        localStorage.removeItem('lastTimeUserClickClose');
+        localStorage.removeItem('lastTimeUserReloadPage');
       }
     }
 
